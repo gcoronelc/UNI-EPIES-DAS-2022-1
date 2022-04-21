@@ -1,0 +1,26 @@
+- Delegado
+  - Nombre: David Santamaria
+  - Celular: 931-797-661
+
+- Subdelegado
+  - Delegado: Edgar Flores
+  - Subdelegado: 955281801
+
+
+Candidatos Delegado
+-------------------------
+- David Santamaria 10
+- Angel Roger      3
+- Kevin Cordova    5
+- Edgar Flores     6
+
+
+Candidatos Subdelegado
+-------------------------
+- Angel Roger      4
+- Kevin Cordova    5
+- Edgar Flores     8
+
+
+
+

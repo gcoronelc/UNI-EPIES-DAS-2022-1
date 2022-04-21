@@ -1,0 +1,24 @@
+PC1 - 29-ABR-2022 15:00 Horas
+---------------------------------------------------------------------
+> Consultas Avanzadas SQL (CTE,Group By, Having, Subconsultas)
+  - 50% Objetiva (Individual)
+  - 50% Desarrollada (Grupo)
+
+
+
+
+
+PC3 -  15:00 Horas
+---------------------------------------------------------------------
+- Primer entregable del proyecto
+
+
+
+
+
+PC4 -  15:00 Horas
+---------------------------------------------------------------------
+- Segundo entregable del proyecto
+
+
+
