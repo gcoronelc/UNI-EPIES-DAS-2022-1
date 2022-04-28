@@ -1,0 +1,36 @@
+﻿
+Grupos (6)	Miembros del grupo	Número de usuarios
+
+Grupo A	
+OSCAR DIEGO FERNANDO CUTIPA LUQUE (oscar.cutipa.l@uni.pe), 
+EVELYN ROSMERY MAMANI CONDORI (evelyn.mamani.c@uni.pe), 
+MARTIN ANDRES OCHOA CELIS (martin.ochoa@uni.pe), 
+JOEL SALOMON RIOS NIMA (joel.rios.n@uni.pe)	4
+
+Grupo B	
+VALERIA HARUMY CHINCHAY HIGA (vchinchayh@uni.pe), 
+JOSE MARTIN DIAZ SILVANO (jose.diaz.s@uni.pe), 
+WILLIAM RAMIREZ CCENCHO (william.ramirez.c@uni.pe), 
+MARTIN FERNANDO VARGAS CHAMBI (mvargasch@uni.pe)	4
+
+Grupo C	
+EDGAR MARTIN FLORES MAMANI (edgar.flores.m@uni.pe), 
+ANGEL ROGER LAGOS ÑAÑA (alagosn@uni.pe), 
+ANGEL MIA ELENA MARIN PUMA (angel.marin.p@uni.pe), 
+DAVID NEHEMIAS SANTAMARIA LEANDRO (david.santamaria.l@uni.pe)	4
+
+Grupo D	
+VICTORIA LINDSAY LA ROSA AGUILAR (victoria.larosa.a@uni.pe), 
+JUAN ALEXANDER BRYAN NOLASCO HUAMACTO (juan.nolasco.h@uni.pe), 
+IVER VICENTE PINCO CORDOVA (iver.pinco.c@uni.pe), 
+LUIS ENRIQUE QUISPE BOTELLO (luis.quispe.b@uni.pe)	4
+
+Grupo E	
+RODRIGO ORLANDO CHUCO NUNEZ (rodrigo.chuco.n@uni.pe), 
+KEVIN ALONSO CORDOVA ZARATE (kevin.cordova.z@uni.pe), 
+LEONARDO ENRIQUE GAMONAL GONZALES (lgamonalg@uni.pe)	3
+
+Grupo F	
+ANDREA JHOSEPHINE ALVAREZ HERNANDEZ (andrea.alvarez.h@uni.pe), 
+LUIS AGUSTIN CADENA VILLANUEVA (lcadenav@uni.pe), 
+MARIA SUSANA LLIUYACC BLAS (maria.lliuyacc.b@uni.pe)
