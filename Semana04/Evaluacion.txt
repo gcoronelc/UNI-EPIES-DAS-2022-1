@@ -1,0 +1,9 @@
+
+PC1: SQL Server 
+PC2: Análisis de un caso
+EP:  SQL Server y análisis de un caso
+PC3: Exposicón y analisis del proyecto (Menos el punto 10 y 11)
+PC4: Implementación de la solución, informe completo.
+
+
+
