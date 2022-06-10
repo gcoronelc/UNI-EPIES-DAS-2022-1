@@ -1,4 +1,4 @@
-package pe.edu.uni.autoventas.db;
+package pe.edu.uni.autoventas;
 
 /**
  * @author Eric Gustavo Coronel Castillo
@@ -8,6 +8,6 @@ package pe.edu.uni.autoventas.db;
  * @facebook www.facebook.com/groups/desarrollasoftware
  * @cursos gcoronelc.github.io
  */
-public class AccesoDB {
+public class ClasePrincipal {
 
 }
