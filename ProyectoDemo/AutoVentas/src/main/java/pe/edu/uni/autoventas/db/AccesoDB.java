@@ -19,9 +19,9 @@ public class AccesoDB {
 
 	public static Connection getConnection() throws SQLException {
 		String driver = "com.microsoft.sqlserver.jdbc.SQLServerDriver";
-		String urlDB = "jdbc:sqlserver://EGCC2020:1433;databaseName=BDAUTOS";
+		String urlDB = "jdbc:sqlserver://localhost:1433;databaseName=BDAUTOS";
 		String user = "sa";
-		String password = "sqla";
+		String password = "sql";
 		Connection cn = null;
 		try {
 			// Paso 1: Cargar el driver a memoria 

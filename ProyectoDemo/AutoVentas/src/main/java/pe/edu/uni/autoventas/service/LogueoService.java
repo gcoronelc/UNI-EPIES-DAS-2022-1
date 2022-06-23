@@ -1,6 +1,6 @@
-package pe.edu.uni.autoventas;
+package pe.edu.uni.autoventas.service;
 
-import pe.edu.uni.autoventas.view.LogueoView;
+import pe.edu.uni.autoventas.model.EmpleadoModel;
 
 /**
  * @author Eric Gustavo Coronel Castillo
@@ -10,10 +10,10 @@ import pe.edu.uni.autoventas.view.LogueoView;
  * @facebook www.facebook.com/groups/desarrollasoftware
  * @cursos gcoronelc.github.io
  */
-public class ClasePrincipal {
-
-	public static void main(String[] args) {
-		LogueoView.main(args);
-	}
+public class LogueoService {
 	
+	public EmpleadoModel validar(String usuario, String clave){
+		return null;
+	}
+
 }

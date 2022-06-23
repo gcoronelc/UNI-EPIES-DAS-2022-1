@@ -1,6 +1,4 @@
-package pe.edu.uni.autoventas;
-
-import pe.edu.uni.autoventas.view.LogueoView;
+package pe.edu.uni.autoventas.controller;
 
 /**
  * @author Eric Gustavo Coronel Castillo
@@ -10,10 +8,6 @@ import pe.edu.uni.autoventas.view.LogueoView;
  * @facebook www.facebook.com/groups/desarrollasoftware
  * @cursos gcoronelc.github.io
  */
-public class ClasePrincipal {
+public class LogueoController {
 
-	public static void main(String[] args) {
-		LogueoView.main(args);
-	}
-	
 }
