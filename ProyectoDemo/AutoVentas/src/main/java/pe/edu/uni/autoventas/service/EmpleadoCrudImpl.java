@@ -20,9 +20,9 @@ import pe.edu.uni.autoventas.model.EmpleadoModel;
  */
 public class EmpleadoCrudImpl implements CrudSpec<EmpleadoModel> {
 	
-	private final String SELECT_BASE = "select IDEMPLEADO, NOMBRE, APELLIDO, DNI,"
+	private final String SELECT_BASE = "SELECT IDEMPLEADO, NOMBRE, APELLIDO, DNI,"
 			  + " TELEFONO, CORREO, IDROL, USUARIO, '*****' CLAVE " 
-			  + "from empleado ";
+			  + "FROM EMPLEADO ";
 
 	@Override
 	public List<EmpleadoModel> readAll() {
@@ -66,7 +66,43 @@ public class EmpleadoCrudImpl implements CrudSpec<EmpleadoModel> {
 
 	@Override
 	public EmpleadoModel readForId(int id) {
-		throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+		// Variables
+		EmpleadoModel bean = null;
+		Connection cn = null;
+		try {
+			// Acceso a la base de datos
+			cn = AccesoDB.getConnection();
+			// Preparando ejecutando el objeto PreparedStatement
+			String sql = SELECT_BASE + " WHERE IDEMPLEADO=?";
+			PreparedStatement pstm = cn.prepareStatement(SELECT_BASE);
+			pstm.setInt(1, id);
+			ResultSet rs = pstm.executeQuery();
+			// Pasar el REsultSet a la lista
+			if(rs.next()){
+				bean = new EmpleadoModel();
+				bean.setId(rs.getInt("IDEMPLEADO"));
+				bean.setNombre(rs.getString("NOMBRE"));
+				bean.setApellido(rs.getString("APELLIDO"));
+				bean.setDni(rs.getString("DNI"));
+				bean.setTelefono(rs.getString("TELEFONO"));
+				bean.setCorreo(rs.getString("CORREO"));
+				bean.setRol(rs.getInt("IDROL"));
+				bean.setUsuario(rs.getString("USUARIO"));
+				bean.setClave(rs.getString("CLAVE"));
+			}
+			rs.close();
+			pstm.close();
+		} catch (SQLException e) {
+			throw new RuntimeException(e.getMessage());
+		} catch (Exception e) {
+			throw  new RuntimeException("Error en el proceso, intentelo mas tarde.");
+		} finally{
+			try {
+				cn.close();
+			} catch (Exception e) {
+			}
+		}
+		return bean;
 	}
 
 	@Override
