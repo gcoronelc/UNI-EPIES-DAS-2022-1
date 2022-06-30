@@ -5,6 +5,9 @@
 
 package pe.edu.uni.autoventas.view;
 
+import pe.edu.uni.autoventas.model.EmpleadoModel;
+import pe.edu.uni.autoventas.util.Session;
+
 /**
  * @author Eric Gustavo Coronel Castillo
  * @blog www.desarrollasoftware.com
@@ -18,7 +21,16 @@ public class MainView extends javax.swing.JFrame {
     /** Creates new form MainView */
     public MainView() {
         initComponents();
+		  establecerTitulo();
+		  this.setLocationRelativeTo(null);
+		  this.setExtendedState(MAXIMIZED_BOTH);
     }
+	 
+	 private void establecerTitulo(){
+		 EmpleadoModel empleado = (EmpleadoModel) Session.get("USUARIO");
+		 String titulo = "EUREKA SOLUTION (Usuario:" + empleado.getUsuario() + ")";
+		 this.setTitle(titulo);
+	 }
 
     /** This method is called from within the constructor to
      * initialize the form.
@@ -114,11 +126,11 @@ public class MainView extends javax.swing.JFrame {
       getContentPane().setLayout(layout);
       layout.setHorizontalGroup(
          layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-         .addComponent(desktopPane, javax.swing.GroupLayout.DEFAULT_SIZE, 400, Short.MAX_VALUE)
+         .addComponent(desktopPane, javax.swing.GroupLayout.DEFAULT_SIZE, 841, Short.MAX_VALUE)
       );
       layout.setVerticalGroup(
          layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-         .addComponent(desktopPane, javax.swing.GroupLayout.DEFAULT_SIZE, 279, Short.MAX_VALUE)
+         .addComponent(desktopPane, javax.swing.GroupLayout.DEFAULT_SIZE, 646, Short.MAX_VALUE)
       );
 
       pack();

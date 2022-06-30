@@ -1,5 +1,11 @@
 package pe.edu.uni.autoventas.view;
 
+import javax.swing.JOptionPane;
+import pe.edu.uni.autoventas.controller.LogueoController;
+import pe.edu.uni.autoventas.model.EmpleadoModel;
+import pe.edu.uni.autoventas.service.LogueoService;
+import pe.edu.uni.autoventas.util.Mensaje;
+
 /**
  * @author Eric Gustavo Coronel Castillo
  * @blog www.desarrollasoftware.com
@@ -45,11 +51,13 @@ public class LogueoView extends javax.swing.JDialog {
       jLabel1.setText("Usuario:");
 
       txtUsuario.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+      txtUsuario.setText("pcastro");
 
       jLabel2.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
       jLabel2.setText("Clave:");
 
       txtClave.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+      txtClave.setText("cazador");
 
       lblMensaje.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
       lblMensaje.setForeground(new java.awt.Color(255, 0, 0));
@@ -101,6 +109,11 @@ public class LogueoView extends javax.swing.JDialog {
       btnIngresar.setBackground(new java.awt.Color(102, 255, 255));
       btnIngresar.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
       btnIngresar.setText("Ingresar");
+      btnIngresar.addActionListener(new java.awt.event.ActionListener() {
+         public void actionPerformed(java.awt.event.ActionEvent evt) {
+            btnIngresarActionPerformed(evt);
+         }
+      });
 
       javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
       jPanel2.setLayout(jPanel2Layout);
@@ -156,6 +169,22 @@ public class LogueoView extends javax.swing.JDialog {
    private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
       System.exit(0);
    }//GEN-LAST:event_btnSalirActionPerformed
+
+   private void btnIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresarActionPerformed
+      try {
+			 // Datos
+			 String usuario = txtUsuario.getText();
+			 String clave = String.valueOf(txtClave.getPassword());
+			 // Proceso
+			 LogueoController controller = new LogueoController();
+			 controller.validar(usuario, clave);			 
+			 // Reporte
+			 this.dispose();
+			 MainView.main(null);
+		 } catch (Exception e) {
+			 Mensaje.error(this, e.getMessage());
+		 }
+   }//GEN-LAST:event_btnIngresarActionPerformed
 
     /**
      * @param args the command line arguments
