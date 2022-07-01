@@ -23,4 +23,5 @@ public class EmpleadoCrudController {
 	public List<EmpleadoModel> read(EmpleadoModel bean) {
 		return service.read(bean);
 	}
+	
 }

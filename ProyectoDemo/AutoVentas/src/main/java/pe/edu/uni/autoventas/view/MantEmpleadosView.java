@@ -1,5 +1,13 @@
 package pe.edu.uni.autoventas.view;
 
+import java.util.ArrayList;
+import java.util.List;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
+import pe.edu.uni.autoventas.controller.EmpleadoCrudController;
+import pe.edu.uni.autoventas.model.EmpleadoModel;
+import pe.edu.uni.autoventas.util.Mensaje;
+
 /**
  * @author Eric Gustavo Coronel Castillo
  * @blog www.desarrollasoftware.com
@@ -9,6 +17,8 @@ package pe.edu.uni.autoventas.view;
  * @cursos gcoronelc.github.io
  */
 public class MantEmpleadosView extends javax.swing.JInternalFrame {
+	
+	private List<EmpleadoModel> lista = new ArrayList<>();
 
     /** Creates new form MantEmpleadosView */
     public MantEmpleadosView() {
@@ -32,11 +42,11 @@ public class MantEmpleadosView extends javax.swing.JInternalFrame {
       jLabel3 = new javax.swing.JLabel();
       txtNombres = new javax.swing.JTextField();
       btnBuscar = new javax.swing.JButton();
-      btnBuscar1 = new javax.swing.JButton();
-      btnBuscar2 = new javax.swing.JButton();
-      btnBuscar3 = new javax.swing.JButton();
-      btnBuscar4 = new javax.swing.JButton();
-      btnBuscar5 = new javax.swing.JButton();
+      btnNuevo = new javax.swing.JButton();
+      btnEditar = new javax.swing.JButton();
+      btnBorrar = new javax.swing.JButton();
+      btnExcel = new javax.swing.JButton();
+      btnPDF = new javax.swing.JButton();
       btnBuscar6 = new javax.swing.JButton();
       jPanel2 = new javax.swing.JPanel();
       jScrollPane1 = new javax.swing.JScrollPane();
@@ -66,24 +76,34 @@ public class MantEmpleadosView extends javax.swing.JInternalFrame {
 
       btnBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/buscar.png"))); // NOI18N
       btnBuscar.setToolTipText("Consultar empleados");
+      btnBuscar.addActionListener(new java.awt.event.ActionListener() {
+         public void actionPerformed(java.awt.event.ActionEvent evt) {
+            btnBuscarActionPerformed(evt);
+         }
+      });
 
-      btnBuscar1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/buscar.png"))); // NOI18N
-      btnBuscar1.setToolTipText("Consultar empleados");
+      btnNuevo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/nuevo.png"))); // NOI18N
+      btnNuevo.setToolTipText("Agregar nuevo empleado.");
 
-      btnBuscar2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/buscar.png"))); // NOI18N
-      btnBuscar2.setToolTipText("Consultar empleados");
+      btnEditar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/editar.png"))); // NOI18N
+      btnEditar.setToolTipText("Modificar empleado actual.");
 
-      btnBuscar3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/buscar.png"))); // NOI18N
-      btnBuscar3.setToolTipText("Consultar empleados");
+      btnBorrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/tacho.png"))); // NOI18N
+      btnBorrar.setToolTipText("Borra el registro seleccionado");
 
-      btnBuscar4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/buscar.png"))); // NOI18N
-      btnBuscar4.setToolTipText("Consultar empleados");
+      btnExcel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/excel.png"))); // NOI18N
+      btnExcel.setToolTipText("Exporta a Excel la lista actual.");
 
-      btnBuscar5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/buscar.png"))); // NOI18N
-      btnBuscar5.setToolTipText("Consultar empleados");
+      btnPDF.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/pdf.png"))); // NOI18N
+      btnPDF.setToolTipText("Exporta a PDF la lista actual.");
 
-      btnBuscar6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/buscar.png"))); // NOI18N
-      btnBuscar6.setToolTipText("Consultar empleados");
+      btnBuscar6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/cancelar.png"))); // NOI18N
+      btnBuscar6.setToolTipText("Cierra el formulario.");
+      btnBuscar6.addActionListener(new java.awt.event.ActionListener() {
+         public void actionPerformed(java.awt.event.ActionEvent evt) {
+            btnBuscar6ActionPerformed(evt);
+         }
+      });
 
       javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
       jPanel1.setLayout(jPanel1Layout);
@@ -105,15 +125,15 @@ public class MantEmpleadosView extends javax.swing.JInternalFrame {
             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
             .addComponent(btnBuscar)
             .addGap(9, 9, 9)
-            .addComponent(btnBuscar1)
+            .addComponent(btnNuevo)
             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-            .addComponent(btnBuscar2)
+            .addComponent(btnEditar)
             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-            .addComponent(btnBuscar3)
+            .addComponent(btnBorrar)
             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-            .addComponent(btnBuscar4)
+            .addComponent(btnExcel)
             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-            .addComponent(btnBuscar5)
+            .addComponent(btnPDF)
             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
             .addComponent(btnBuscar6)
             .addContainerGap(49, Short.MAX_VALUE))
@@ -131,11 +151,11 @@ public class MantEmpleadosView extends javax.swing.JInternalFrame {
                         .addComponent(txtNombres, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE))
                      .addComponent(btnBuscar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                     .addComponent(btnBuscar1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                     .addComponent(btnBuscar2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                     .addComponent(btnBuscar3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                     .addComponent(btnBuscar4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                     .addComponent(btnBuscar5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                     .addComponent(btnNuevo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                     .addComponent(btnEditar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                     .addComponent(btnBorrar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                     .addComponent(btnExcel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                     .addComponent(btnPDF, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                      .addComponent(btnBuscar6, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                   .addGroup(jPanel1Layout.createSequentialGroup()
@@ -174,6 +194,8 @@ public class MantEmpleadosView extends javax.swing.JInternalFrame {
             return canEdit [columnIndex];
          }
       });
+      tblDatos.setRowHeight(25);
+      tblDatos.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
       jScrollPane1.setViewportView(tblDatos);
 
       javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -211,15 +233,36 @@ public class MantEmpleadosView extends javax.swing.JInternalFrame {
       pack();
    }// </editor-fold>//GEN-END:initComponents
 
+   private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
+      try {
+			// Datos
+			String dni = txtDni.getText().trim();
+			String apellido = txtApellidos.getText().trim();
+			String nombre = txtNombres.getText().trim();
+			// Proceso
+			EmpleadoModel bean = new EmpleadoModel(nombre, apellido, dni);
+			EmpleadoCrudController control = new EmpleadoCrudController();
+			lista = control.read(bean);
+			// Reporte
+			mostrarLista();
+		} catch (Exception e) {
+			Mensaje.error(this, e.getMessage());
+		}
+   }//GEN-LAST:event_btnBuscarActionPerformed
+
+   private void btnBuscar6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscar6ActionPerformed
+      this.dispose();
+   }//GEN-LAST:event_btnBuscar6ActionPerformed
+
 
    // Variables declaration - do not modify//GEN-BEGIN:variables
+   private javax.swing.JButton btnBorrar;
    private javax.swing.JButton btnBuscar;
-   private javax.swing.JButton btnBuscar1;
-   private javax.swing.JButton btnBuscar2;
-   private javax.swing.JButton btnBuscar3;
-   private javax.swing.JButton btnBuscar4;
-   private javax.swing.JButton btnBuscar5;
    private javax.swing.JButton btnBuscar6;
+   private javax.swing.JButton btnEditar;
+   private javax.swing.JButton btnExcel;
+   private javax.swing.JButton btnNuevo;
+   private javax.swing.JButton btnPDF;
    private javax.swing.JLabel jLabel1;
    private javax.swing.JLabel jLabel2;
    private javax.swing.JLabel jLabel3;
@@ -232,4 +275,18 @@ public class MantEmpleadosView extends javax.swing.JInternalFrame {
    private javax.swing.JTextField txtNombres;
    // End of variables declaration//GEN-END:variables
 
+	private void mostrarLista() {
+		// TableModel
+		DefaultTableModel tabla = (DefaultTableModel) tblDatos.getModel();
+		// Limpiar tabla
+		tabla.setRowCount(0);
+		// Cargar tabla con lista de datos
+		for (EmpleadoModel bean : lista) {
+			Object[] rowData = {
+				bean.getId(), bean.getApellido(), bean.getNombre(),
+				bean.getDni(), bean.getTelefono(), bean.getCorreo()
+			};
+			tabla.addRow(rowData);
+		}
+	}
 }

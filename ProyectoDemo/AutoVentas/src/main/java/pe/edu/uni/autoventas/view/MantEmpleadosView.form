@@ -74,15 +74,15 @@
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Component id="btnBuscar" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="9" max="-2" attributes="0"/>
-                  <Component id="btnBuscar1" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnNuevo" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="btnBuscar2" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnEditar" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="btnBuscar3" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnBorrar" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="btnBuscar4" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnExcel" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="btnBuscar5" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnPDF" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="btnBuscar6" min="-2" max="-2" attributes="0"/>
                   <EmptySpace pref="49" max="32767" attributes="0"/>
@@ -103,11 +103,11 @@
                                   <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                               </Group>
                               <Component id="btnBuscar" max="32767" attributes="0"/>
-                              <Component id="btnBuscar1" alignment="1" max="32767" attributes="0"/>
-                              <Component id="btnBuscar2" alignment="1" max="32767" attributes="0"/>
-                              <Component id="btnBuscar3" alignment="1" max="32767" attributes="0"/>
-                              <Component id="btnBuscar4" alignment="1" max="32767" attributes="0"/>
-                              <Component id="btnBuscar5" alignment="1" max="32767" attributes="0"/>
+                              <Component id="btnNuevo" alignment="1" max="32767" attributes="0"/>
+                              <Component id="btnEditar" alignment="1" max="32767" attributes="0"/>
+                              <Component id="btnBorrar" alignment="1" max="32767" attributes="0"/>
+                              <Component id="btnExcel" alignment="1" max="32767" attributes="0"/>
+                              <Component id="btnPDF" alignment="1" max="32767" attributes="0"/>
                               <Component id="btnBuscar6" alignment="1" max="32767" attributes="0"/>
                           </Group>
                       </Group>
@@ -182,54 +182,60 @@
             </Property>
             <Property name="toolTipText" type="java.lang.String" value="Consultar empleados"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnBuscarActionPerformed"/>
+          </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="btnBuscar1">
+        <Component class="javax.swing.JButton" name="btnNuevo">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/imagenes/buscar.png"/>
+              <Image iconType="3" name="/imagenes/nuevo.png"/>
             </Property>
-            <Property name="toolTipText" type="java.lang.String" value="Consultar empleados"/>
+            <Property name="toolTipText" type="java.lang.String" value="Agregar nuevo empleado."/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JButton" name="btnBuscar2">
+        <Component class="javax.swing.JButton" name="btnEditar">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/imagenes/buscar.png"/>
+              <Image iconType="3" name="/imagenes/editar.png"/>
             </Property>
-            <Property name="toolTipText" type="java.lang.String" value="Consultar empleados"/>
+            <Property name="toolTipText" type="java.lang.String" value="Modificar empleado actual."/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JButton" name="btnBuscar3">
+        <Component class="javax.swing.JButton" name="btnBorrar">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/imagenes/buscar.png"/>
+              <Image iconType="3" name="/imagenes/tacho.png"/>
             </Property>
-            <Property name="toolTipText" type="java.lang.String" value="Consultar empleados"/>
+            <Property name="toolTipText" type="java.lang.String" value="Borra el registro seleccionado"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JButton" name="btnBuscar4">
+        <Component class="javax.swing.JButton" name="btnExcel">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/imagenes/buscar.png"/>
+              <Image iconType="3" name="/imagenes/excel.png"/>
             </Property>
-            <Property name="toolTipText" type="java.lang.String" value="Consultar empleados"/>
+            <Property name="toolTipText" type="java.lang.String" value="Exporta a Excel la lista actual."/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JButton" name="btnBuscar5">
+        <Component class="javax.swing.JButton" name="btnPDF">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/imagenes/buscar.png"/>
+              <Image iconType="3" name="/imagenes/pdf.png"/>
             </Property>
-            <Property name="toolTipText" type="java.lang.String" value="Consultar empleados"/>
+            <Property name="toolTipText" type="java.lang.String" value="Exporta a PDF la lista actual."/>
           </Properties>
         </Component>
         <Component class="javax.swing.JButton" name="btnBuscar6">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/imagenes/buscar.png"/>
+              <Image iconType="3" name="/imagenes/cancelar.png"/>
             </Property>
-            <Property name="toolTipText" type="java.lang.String" value="Consultar empleados"/>
+            <Property name="toolTipText" type="java.lang.String" value="Cierra el formulario."/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnBuscar6ActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>
@@ -319,6 +325,8 @@
                     </Column>
                   </TableColumnModel>
                 </Property>
+                <Property name="rowHeight" type="int" value="25"/>
+                <Property name="selectionMode" type="int" value="0"/>
                 <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
                   <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
                 </Property>

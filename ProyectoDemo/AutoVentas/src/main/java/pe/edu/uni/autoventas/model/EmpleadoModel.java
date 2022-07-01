@@ -23,6 +23,13 @@ public class EmpleadoModel {
 	public EmpleadoModel() {
 	}
 
+	public EmpleadoModel(String nombre, String apellido, String dni) {
+		this.nombre = nombre;
+		this.apellido = apellido;
+		this.dni = dni;
+	}
+	
+
 	public int getId() {
 		return id;
 	}
