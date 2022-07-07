@@ -120,6 +120,11 @@ public class MantClientesView extends javax.swing.JInternalFrame {
 
       jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/excel.png"))); // NOI18N
       jButton5.setToolTipText("Buscar clientes");
+      jButton5.addActionListener(new java.awt.event.ActionListener() {
+         public void actionPerformed(java.awt.event.ActionEvent evt) {
+            jButton5ActionPerformed(evt);
+         }
+      });
 
       jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/pdf.png"))); // NOI18N
       jButton6.setToolTipText("Buscar clientes");
@@ -333,6 +338,10 @@ public class MantClientesView extends javax.swing.JInternalFrame {
 		}
 		pintarTabla(fila);
    }//GEN-LAST:event_btnEliminarActionPerformed
+
+   private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+      // TODO add your handling code here:
+   }//GEN-LAST:event_jButton5ActionPerformed
 
 
    // Variables declaration - do not modify//GEN-BEGIN:variables
