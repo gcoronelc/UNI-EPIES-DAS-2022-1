@@ -21,6 +21,15 @@ public class EmpleadoModel {
 	private String clave;
 
 	public EmpleadoModel() {
+		this.id = 0;
+		this.nombre = "";
+		this.apellido = "";
+		this.dni = "";
+		this.telefono = "";
+		this.correo = "";
+		this.rol = 0;
+		this.usuario = "";
+		this.clave = "";
 	}
 
 	public EmpleadoModel(String nombre, String apellido, String dni) {

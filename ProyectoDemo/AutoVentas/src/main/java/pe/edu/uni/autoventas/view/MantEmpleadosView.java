@@ -3,10 +3,11 @@ package pe.edu.uni.autoventas.view;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableModel;
 import pe.edu.uni.autoventas.controller.EmpleadoCrudController;
 import pe.edu.uni.autoventas.model.EmpleadoModel;
 import pe.edu.uni.autoventas.util.Mensaje;
+import pe.edu.uni.autoventas.util.Session;
+import pe.edu.uni.autoventas.util.UtilView;
 
 /**
  * @author Eric Gustavo Coronel Castillo
@@ -84,12 +85,27 @@ public class MantEmpleadosView extends javax.swing.JInternalFrame {
 
       btnNuevo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/nuevo.png"))); // NOI18N
       btnNuevo.setToolTipText("Agregar nuevo empleado.");
+      btnNuevo.addActionListener(new java.awt.event.ActionListener() {
+         public void actionPerformed(java.awt.event.ActionEvent evt) {
+            btnNuevoActionPerformed(evt);
+         }
+      });
 
       btnEditar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/editar.png"))); // NOI18N
       btnEditar.setToolTipText("Modificar empleado actual.");
+      btnEditar.addActionListener(new java.awt.event.ActionListener() {
+         public void actionPerformed(java.awt.event.ActionEvent evt) {
+            btnEditarActionPerformed(evt);
+         }
+      });
 
       btnBorrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/tacho.png"))); // NOI18N
       btnBorrar.setToolTipText("Borra el registro seleccionado");
+      btnBorrar.addActionListener(new java.awt.event.ActionListener() {
+         public void actionPerformed(java.awt.event.ActionEvent evt) {
+            btnBorrarActionPerformed(evt);
+         }
+      });
 
       btnExcel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/excel.png"))); // NOI18N
       btnExcel.setToolTipText("Exporta a Excel la lista actual.");
@@ -253,6 +269,52 @@ public class MantEmpleadosView extends javax.swing.JInternalFrame {
    private void btnBuscar6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscar6ActionPerformed
       this.dispose();
    }//GEN-LAST:event_btnBuscar6ActionPerformed
+
+   private void btnNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoActionPerformed
+      EditarEmpleadoView view = new EditarEmpleadoView(null, true);
+		view.setAccion(UtilView.CRUD_NUEVO);
+		view.setRecord(new EmpleadoModel());
+		Session.put("bean", null);
+		view.setVisible(true);
+		if(Session.get("bean") == null){
+			return;
+		}
+		EmpleadoModel record = (EmpleadoModel) Session.get("bean");
+		lista.set(0, record);
+		mostrarLista();
+   }//GEN-LAST:event_btnNuevoActionPerformed
+
+   private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
+      if(lista.size() == 0){
+			Mensaje.error(this, "No tienes datos en la tabla.");
+			return;
+		}
+		int fila = tblDatos.getSelectedRow();
+		if(fila == -1){
+			Mensaje.error(this, "Debes seleccionar una fila.");
+			return;
+		}
+		EditarEmpleadoView view = new EditarEmpleadoView(null, true);
+		view.setAccion(UtilView.CRUD_EDITAR);
+		view.setRecord(lista.get(fila));
+		view.setVisible(true);
+   }//GEN-LAST:event_btnEditarActionPerformed
+
+   private void btnBorrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBorrarActionPerformed
+      if(lista.size() == 0){
+			Mensaje.error(this, "No tienes datos en la tabla.");
+			return;
+		}
+		int fila = tblDatos.getSelectedRow();
+		if(fila == -1){
+			Mensaje.error(this, "Debes seleccionar una fila.");
+			return;
+		}
+		EditarEmpleadoView view = new EditarEmpleadoView(null, true);
+		view.setAccion(UtilView.CRUD_ELIMINAR);
+		view.setRecord(lista.get(fila));
+		view.setVisible(true);
+   }//GEN-LAST:event_btnBorrarActionPerformed
 
 
    // Variables declaration - do not modify//GEN-BEGIN:variables

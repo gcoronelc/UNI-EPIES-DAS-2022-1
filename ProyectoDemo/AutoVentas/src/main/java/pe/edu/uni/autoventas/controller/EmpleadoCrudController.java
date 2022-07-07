@@ -14,6 +14,7 @@ import pe.edu.uni.autoventas.service.EmpleadoCrudImpl;
  * @cursos gcoronelc.github.io
  */
 public class EmpleadoCrudController {
+	
 	private CrudSpec<EmpleadoModel> service;
 
 	public EmpleadoCrudController() {
@@ -22,6 +23,10 @@ public class EmpleadoCrudController {
 	
 	public List<EmpleadoModel> read(EmpleadoModel bean) {
 		return service.read(bean);
+	}
+	
+	public void insert(EmpleadoModel bean){
+		service.insert(bean);
 	}
 	
 }

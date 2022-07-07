@@ -127,7 +127,60 @@ public class EmpleadoCrudImpl implements CrudSpec<EmpleadoModel>, RowMapper<Empl
 
 	@Override
 	public void insert(EmpleadoModel bean) {
-		throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+		// Variables
+		Connection cn = null;
+		PreparedStatement pstm = null;
+		ResultSet rs = null;
+		String sql = "";
+		// Proceso
+		try {
+			// Conexión
+			cn = AccesoDB.getConnection();
+			cn.setAutoCommit(false); // Para manejar transacciones con Java
+			// Id del nuevo empleado
+			sql = "SELECT MAX(IDEMPLEADO) ID FROM EMPLEADO";
+			pstm = cn.prepareStatement(sql);
+			rs = pstm.executeQuery();
+			rs.next();
+			int id = rs.getInt("ID") + 1;
+			rs.close();
+			pstm.close();
+			// Registrar empleado
+			sql = "INSERT INTO EMPLEADO(IDEMPLEADO,NOMBRE,APELLIDO,DNI,TELEFONO,"
+					  + "CORREO,IDROL,USUARIO,CLAVE) VALUES(?,?,?,?,?,?,?,?,?)";
+			pstm = cn.prepareStatement(sql);
+			pstm.setInt(1, id);
+			pstm.setString(2, bean.getNombre());
+			pstm.setString(3, bean.getApellido());
+			pstm.setString(4, bean.getDni());
+			pstm.setString(5, bean.getTelefono());
+			pstm.setString(6, bean.getCorreo());
+			pstm.setInt(7, bean.getRol());
+			pstm.setString(8, bean.getUsuario());
+			pstm.setString(9, bean.getClave());
+			pstm.executeUpdate();
+			pstm.close();
+			// Finalizar
+			cn.commit();
+			bean.setId(id);
+		} catch (SQLException e) {
+			try {
+				cn.rollback();
+			} catch (Exception e1) {
+			}
+			throw new RuntimeException(e.getMessage());
+		} catch (Exception e) {
+			try {
+				cn.rollback();
+			} catch (Exception e1) {
+			}
+			throw new RuntimeException("Error en el proceso, ejecutelo nuevamente.");
+		} finally{
+			try {
+				cn.close();
+			} catch (Exception e) {
+			}
+		}
 	}
 
 	@Override
