@@ -185,12 +185,91 @@ public class EmpleadoCrudImpl implements CrudSpec<EmpleadoModel>, RowMapper<Empl
 
 	@Override
 	public void update(EmpleadoModel bean) {
-		throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+		// Variables
+		Connection cn = null;
+		PreparedStatement pstm = null;
+		ResultSet rs = null;
+		String sql = "";
+		// Proceso
+		try {
+			// Conexión
+			cn = AccesoDB.getConnection();
+			cn.setAutoCommit(false); // Para manejar transacciones con Java
+			// Registrar empleado
+			sql = "UPDATE EMPLEADO SET NOMBRE=?,APELLIDO=?, " +
+					"DNI=?,TELEFONO=?,CORREO=?,IDROL=?,USUARIO=? " +
+					"WHERE IDEMPLEADO=?";
+			pstm = cn.prepareStatement(sql);
+			pstm.setString(1, bean.getNombre());
+			pstm.setString(2, bean.getApellido());
+			pstm.setString(3, bean.getDni());
+			pstm.setString(4, bean.getTelefono());
+			pstm.setString(5, bean.getCorreo());
+			pstm.setInt(6, bean.getRol());
+			pstm.setString(7, bean.getUsuario());
+			pstm.setInt(8, bean.getId());
+			pstm.executeUpdate();
+			pstm.close();
+			// Finalizar
+			cn.commit();
+		} catch (SQLException e) {
+			try {
+				cn.rollback();
+			} catch (Exception e1) {
+			}
+			throw new RuntimeException(e.getMessage());
+		} catch (Exception e) {
+			try {
+				cn.rollback();
+			} catch (Exception e1) {
+			}
+			throw new RuntimeException("Error en el proceso, ejecutelo nuevamente.");
+		} finally{
+			try {
+				cn.close();
+			} catch (Exception e) {
+			}
+		}
 	}
 
 	@Override
 	public void delete(int id) {
-		throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+		// Variables
+		Connection cn = null;
+		PreparedStatement pstm = null;
+		ResultSet rs = null;
+		String sql = "";
+		// Proceso
+		try {
+			// Conexión
+			cn = AccesoDB.getConnection();
+			cn.setAutoCommit(false); // Para manejar transacciones con Java
+			// Registrar empleado
+			sql = "DELETE FROM EMPLEADO WHERE IDEMPLEADO=?";
+			pstm = cn.prepareStatement(sql);
+			pstm.setInt(1, id);
+			pstm.executeUpdate();
+			pstm.close();
+			// Finalizar
+			cn.commit();
+		} catch (SQLException e) {
+			try {
+				cn.rollback();
+			} catch (Exception e1) {
+			}
+			throw new RuntimeException(e.getMessage());
+		} catch (Exception e) {
+			try {
+				cn.rollback();
+			} catch (Exception e1) {
+			}
+			throw new RuntimeException("Error en el proceso, ejecutelo nuevamente.");
+		} finally{
+			try {
+				cn.close();
+			} catch (Exception e) {
+			}
+		}
 	}
 
 	@Override

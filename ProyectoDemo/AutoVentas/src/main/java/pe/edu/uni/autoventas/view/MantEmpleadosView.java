@@ -1,8 +1,18 @@
 package pe.edu.uni.autoventas.view;
 
+import java.io.FileOutputStream;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
+import org.apache.poi.hssf.usermodel.HSSFCell;
+import org.apache.poi.hssf.usermodel.HSSFCellStyle;
+import org.apache.poi.hssf.usermodel.HSSFDataFormat;
+import org.apache.poi.hssf.usermodel.HSSFRow;
+import org.apache.poi.hssf.usermodel.HSSFSheet;
+import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+import org.apache.poi.poifs.filesystem.POIFSFileSystem;
+import org.apache.poi.ss.usermodel.CellType;
 import pe.edu.uni.autoventas.controller.EmpleadoCrudController;
 import pe.edu.uni.autoventas.model.EmpleadoModel;
 import pe.edu.uni.autoventas.util.Mensaje;
@@ -109,6 +119,11 @@ public class MantEmpleadosView extends javax.swing.JInternalFrame {
 
       btnExcel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/excel.png"))); // NOI18N
       btnExcel.setToolTipText("Exporta a Excel la lista actual.");
+      btnExcel.addActionListener(new java.awt.event.ActionListener() {
+         public void actionPerformed(java.awt.event.ActionEvent evt) {
+            btnExcelActionPerformed(evt);
+         }
+      });
 
       btnPDF.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/pdf.png"))); // NOI18N
       btnPDF.setToolTipText("Exporta a PDF la lista actual.");
@@ -298,6 +313,12 @@ public class MantEmpleadosView extends javax.swing.JInternalFrame {
 		view.setAccion(UtilView.CRUD_EDITAR);
 		view.setRecord(lista.get(fila));
 		view.setVisible(true);
+		if(Session.get("bean") == null){
+			return;
+		}
+		EmpleadoModel record = (EmpleadoModel) Session.get("bean");
+		lista.set(fila, record);
+		mostrarLista();
    }//GEN-LAST:event_btnEditarActionPerformed
 
    private void btnBorrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBorrarActionPerformed
@@ -314,7 +335,45 @@ public class MantEmpleadosView extends javax.swing.JInternalFrame {
 		view.setAccion(UtilView.CRUD_ELIMINAR);
 		view.setRecord(lista.get(fila));
 		view.setVisible(true);
+		if(Session.get("bean") == null){
+			return;
+		}
+		lista.remove(fila);
+		mostrarLista();
    }//GEN-LAST:event_btnBorrarActionPerformed
+
+   private void btnExcelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcelActionPerformed
+      if (lista == null || lista.isEmpty()) {
+			return;
+		}
+		try {
+			// Creación del libro
+			String plantilla = "/plantillas/REPORTE-EMPLEADOS.xls";
+			InputStream isPlantilla = getClass().getResourceAsStream(plantilla);
+			POIFSFileSystem fs = new POIFSFileSystem(isPlantilla);
+			HSSFWorkbook objLibro = new HSSFWorkbook(fs, true);
+			// Crea la hoja
+			HSSFSheet hoja = objLibro.getSheetAt(0);
+			// Cargar los datos a la hoja
+			int numFila = 3;
+			HSSFRow objFila;
+			for (EmpleadoModel model : lista) {
+				numFila++;
+				objFila = hoja.createRow(numFila);
+				crearCeldaEntera(objFila, 0, model.getId());
+				crearCeldaCadena(objFila, 1, model.getNombre());
+				crearCeldaCadena(objFila, 2, model.getApellido());
+				crearCeldaCadena(objFila, 3, model.getCorreo());
+			}
+			// Se vuelca la información a un archivo.
+			FileOutputStream fileOut = new FileOutputStream("E://Archivos//EMPLEADOS.xls");
+			objLibro.write(fileOut);
+			fileOut.close();
+			System.out.println("Todo ok.");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+   }//GEN-LAST:event_btnExcelActionPerformed
 
 
    // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -350,5 +409,28 @@ public class MantEmpleadosView extends javax.swing.JInternalFrame {
 			};
 			tabla.addRow(rowData);
 		}
+	}
+	
+	
+	// Creación de celdas
+	private void crearCeldaCadena(HSSFRow fila, int columna, String dato) {
+		HSSFCell celda = fila.createCell(columna, CellType.STRING);
+		celda.setCellValue(dato);
+	}
+
+	private void crearCeldaEntera(HSSFRow fila, int columna, int dato) {
+		HSSFCell celda = fila.createCell(columna, CellType.NUMERIC);
+		HSSFCellStyle style = fila.getSheet().getWorkbook().createCellStyle();
+		style.setDataFormat(HSSFDataFormat.getBuiltinFormat("0"));
+		celda.setCellStyle(style);
+		celda.setCellValue(dato);
+	}
+
+	private void crearCeldaDecimal(HSSFRow fila, int columna, double dato) {
+		HSSFCell celda = fila.createCell(columna, CellType.NUMERIC);
+		HSSFCellStyle style = fila.getSheet().getWorkbook().createCellStyle();
+		style.setDataFormat(HSSFDataFormat.getBuiltinFormat("#,##0.00"));
+		celda.setCellStyle(style);
+		celda.setCellValue(dato);
 	}
 }

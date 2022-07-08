@@ -341,9 +341,19 @@ public class EditarEmpleadoView extends javax.swing.JDialog {
 			record.setRol(Integer.parseInt(txtRol.getText()));
 			record.setUsuario(txtUsuario.getText());
 			record.setClave(String.valueOf(txtClave.getPassword()));
-			// Insertar registro
+			// Proceso
 			EmpleadoCrudController control = new EmpleadoCrudController();
-			control.insert(record);
+			switch(this.accion){
+				case UtilView.CRUD_NUEVO:
+					control.insert(record);
+					break;
+				case UtilView.CRUD_EDITAR:
+					control.update(record);
+					break;
+				case UtilView.CRUD_ELIMINAR:
+					control.delete(record.getId());
+					break;
+			}
 			// Cerrar formulario
 			Session.put("bean", record);
 			this.dispose();

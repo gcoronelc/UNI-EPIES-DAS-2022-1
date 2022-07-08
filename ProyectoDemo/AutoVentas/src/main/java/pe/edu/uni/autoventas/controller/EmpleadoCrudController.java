@@ -29,4 +29,11 @@ public class EmpleadoCrudController {
 		service.insert(bean);
 	}
 	
+	public void update(EmpleadoModel bean){
+		service.update(bean);
+	}
+	
+	public void delete(int id) {
+		service.delete(id);
+	}
 }
