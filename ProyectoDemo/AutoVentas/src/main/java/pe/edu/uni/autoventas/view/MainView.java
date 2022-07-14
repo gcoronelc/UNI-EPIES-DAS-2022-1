@@ -50,6 +50,7 @@ public class MainView extends javax.swing.JFrame {
       menuTablaProductos = new javax.swing.JMenuItem();
       menuTablaClientes = new javax.swing.JMenuItem();
       menuTablaEmpleados = new javax.swing.JMenuItem();
+      menuTablaRutas = new javax.swing.JMenuItem();
 
       setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -103,6 +104,14 @@ public class MainView extends javax.swing.JFrame {
       });
       menuTabla.add(menuTablaEmpleados);
 
+      menuTablaRutas.setText("Rutas");
+      menuTablaRutas.addActionListener(new java.awt.event.ActionListener() {
+         public void actionPerformed(java.awt.event.ActionEvent evt) {
+            menuTablaRutasActionPerformed(evt);
+         }
+      });
+      menuTabla.add(menuTablaRutas);
+
       menuBar.add(menuTabla);
 
       setJMenuBar(menuBar);
@@ -128,6 +137,10 @@ public class MainView extends javax.swing.JFrame {
    private void menuTablaEmpleadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuTablaEmpleadosActionPerformed
       mostrarForm(MantEmpleadosView.class);
    }//GEN-LAST:event_menuTablaEmpleadosActionPerformed
+
+   private void menuTablaRutasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuTablaRutasActionPerformed
+     mostrarForm(MantRutasView.class);
+   }//GEN-LAST:event_menuTablaRutasActionPerformed
 
 	/**
 	 * @param args the command line arguments
@@ -176,6 +189,7 @@ public class MainView extends javax.swing.JFrame {
    private javax.swing.JMenuItem menuTablaClientes;
    private javax.swing.JMenuItem menuTablaEmpleados;
    private javax.swing.JMenuItem menuTablaProductos;
+   private javax.swing.JMenuItem menuTablaRutas;
    private javax.swing.JMenu menuUtil;
    private javax.swing.JMenuItem menuUtilCambiarClave;
    // End of variables declaration//GEN-END:variables

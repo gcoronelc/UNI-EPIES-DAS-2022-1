@@ -1,0 +1,5 @@
+- Todos deben exponer.
+- Deben decir y mostrar su nombre bien claro antes de exponer.
+- Se debe mostrar el rostro exponiendo del expositor.
+- No exponer Logueo
+- 
