@@ -1,1 +1,10 @@
-Programación de procesos.
+SISTEMA O APLICACIÓN
+---------------------------------------
+- CRUDs
+- Programación de procesos
+- Consultas
+- Reportes
+- Utilitarios
+
+
+
